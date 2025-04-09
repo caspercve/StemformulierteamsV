@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kies een kant of verdwijn eeuwig in de sneeuw</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Cinzel Decorative', serif;
+      background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding-top: 60px;
+      background-image: url('https://images.unsplash.com/photo-1600792222857-e3f9033d7589?auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      backdrop-filter: blur(4px);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      text-align: center;
+      max-width: 90%;
+      text-shadow: 0 0 20px #00ffff, 0 0 30px #ffffff;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1em;
+      margin-bottom: 20px;
+      width: 250px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      border: 2px solid #00ffff;
+      padding: 15px 30px;
+      margin: 10px;
+      border-radius: 10px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00ffff;
+      color: #0d0d0d;
+      transform: scale(1.05);
+    }
+
+    #thankYouMessage {
+      display: none;
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 20px 40px;
+      border: 2px solid #00ffff;
+      border-radius: 12px;
+      font-size: 1.2em;
+      text-align: center;
+      z-index: 9999;
+      box-shadow: 0 0 20px #00ffff;
+      text-shadow: 0 0 10px #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      input[type="text"] {
+        width: 80%;
+      }
+
+      #thankYouMessage {
+        font-size: 1em;
+        padding: 15px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Kies een kant of verdwijn eeuwig in de sneeuw</h1>
+  <form id="voteForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfnL4QYPByFUw9N_btbCFiDRSaVSagVZZ1L5byPjyelFac2jA/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleSubmit()">
+    <input type="text" name="entry.2005620554" placeholder="Jouw naam" required>
+    <button type="submit" name="entry.1045781291" value="Team Rebel (Geile Heidi)" onclick="document.querySelector('input[name='entry.1045781291']').value='Team Rebel (Geile Heidi)'">Team Rebel (Geile Heidi)</button>
+    <button type="submit" name="entry.1045781291" value="Team Apres-ski (Burgemeester)" onclick="document.querySelector('input[name='entry.1045781291']').value='Team Apres-ski (Burgemeester)'">Team Apres-ski (Burgemeester)</button>
+    <button type="submit" name="entry.1045781291" value="Team Neutraliteit (Ingeberg)" onclick="document.querySelector('input[name='entry.1045781291']').value='Team Neutraliteit (Ingeberg)'">Team Neutraliteit (Ingeberg)</button>
+    <input type="hidden" name="entry.1045781291" value="">
+  </form>
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <div id="thankYouMessage">Het pad is gekozen. Moge de sneeuw je genadig zijn.</div>
+
+  <script>
+    function handleSubmit() {
+      const message = document.getElementById('thankYouMessage');
+      message.style.display = 'block';
+      setTimeout(() => {
+        message.style.display = 'none';
+        document.getElementById('voteForm').reset();
+      }, 5000);
+      return true;
+    }
+  </script>
+</body>
+</html>
