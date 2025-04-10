@@ -19,7 +19,7 @@
       justify-content: flex-start;
       min-height: 100vh;
       padding-top: 60px;
-      background-image: url('https://images.unsplash.com/photo-1600792222857-e3f9033d7589?auto=format&fit=crop&w=1350&q=80');
+      background-image: url('https://cdn.pixabay.com/photo/2016/11/29/06/15/mountains-1867277_1280.jpg');
       background-size: cover;
       background-position: center;
       backdrop-filter: blur(4px);
@@ -41,6 +41,7 @@
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+      margin-bottom: 20px;
     }
 
     input[type="text"] {
@@ -105,13 +106,25 @@
 </head>
 <body>
   <h1>Kies een kant of verdwijn eeuwig in de sneeuw</h1>
-  <form id="voteForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfnL4QYPByFUw9N_btbCFiDRSaVSagVZZ1L5byPjyelFac2jA/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleSubmit()">
+
+  <form action="https://docs.google.com/forms/d/e/1FAIpQLSfnL4QYPByFUw9N_btbCFiDRSaVSagVZZ1L5byPjyelFac2jA/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleSubmit()">
     <input type="text" name="entry.2005620554" placeholder="Jouw naam" required>
-    <button type="submit" name="entry.1045781291" value="Team Rebel (Geile Heidi)" onclick="document.querySelector('input[name='entry.1045781291']').value='Team Rebel (Geile Heidi)'">Team Rebel (Geile Heidi)</button>
-    <button type="submit" name="entry.1045781291" value="Team Apres-ski (Burgemeester)" onclick="document.querySelector('input[name='entry.1045781291']').value='Team Apres-ski (Burgemeester)'">Team Apres-ski (Burgemeester)</button>
-    <button type="submit" name="entry.1045781291" value="Team Neutraliteit (Ingeberg)" onclick="document.querySelector('input[name='entry.1045781291']').value='Team Neutraliteit (Ingeberg)'">Team Neutraliteit (Ingeberg)</button>
-    <input type="hidden" name="entry.1045781291" value="">
+    <input type="hidden" name="entry.1045781291" value="Team Rebel (Geile Heidi)">
+    <button type="submit">Team Rebel (Geile Heidi)</button>
   </form>
+
+  <form action="https://docs.google.com/forms/d/e/1FAIpQLSfnL4QYPByFUw9N_btbCFiDRSaVSagVZZ1L5byPjyelFac2jA/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleSubmit()">
+    <input type="text" name="entry.2005620554" placeholder="Jouw naam" required>
+    <input type="hidden" name="entry.1045781291" value="Team Apres-ski (Burgemeester)">
+    <button type="submit">Team Apres-ski (Burgemeester)</button>
+  </form>
+
+  <form action="https://docs.google.com/forms/d/e/1FAIpQLSfnL4QYPByFUw9N_btbCFiDRSaVSagVZZ1L5byPjyelFac2jA/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleSubmit()">
+    <input type="text" name="entry.2005620554" placeholder="Jouw naam" required>
+    <input type="hidden" name="entry.1045781291" value="Team Neutraliteit (Ingeberg)">
+    <button type="submit">Team Neutraliteit (Ingeberg)</button>
+  </form>
+
   <iframe name="hidden_iframe" style="display:none;"></iframe>
 
   <div id="thankYouMessage">Het pad is gekozen. Moge de sneeuw je genadig zijn.</div>
@@ -122,7 +135,6 @@
       message.style.display = 'block';
       setTimeout(() => {
         message.style.display = 'none';
-        document.getElementById('voteForm').reset();
       }, 5000);
       return true;
     }
